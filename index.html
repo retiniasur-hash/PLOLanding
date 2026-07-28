@@ -185,6 +185,52 @@ section{padding:88px 0;position:relative}
 .feat p{font-size:.88rem;color:var(--muted)}
 .feat .chip{display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);border:1px solid rgba(143,211,244,.3);padding:4px 10px;border-radius:100px}
 
+/* ============ Sección IA Agente ============ */
+.ai-section{background:linear-gradient(180deg,transparent,rgba(14,124,134,.10) 20%,rgba(14,124,134,.13) 50%,transparent)}
+.ai-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px}
+.ai-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(143,211,244,.08);border:1px solid rgba(143,211,244,.35);border-radius:100px;padding:6px 14px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:22px}
+.ai-badge .pulse-ring{position:relative;width:10px;height:10px}
+.ai-badge .pulse-ring::before,.ai-badge .pulse-ring::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--sky)}
+.ai-badge .pulse-ring::before{animation:ring 2s ease-out infinite;opacity:0}
+.ai-badge .pulse-ring::after{opacity:.9;transform:scale(.6)}
+@keyframes ring{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.ai-title{font-size:clamp(1.8rem,3.8vw,2.8rem);margin-bottom:16px}
+.ai-title .hl-sky{background:linear-gradient(92deg,var(--sky),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ai-desc{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:28px}
+.ai-desc b{color:var(--text)}
+/* Panel del agente animado */
+.agent-panel{background:var(--panel);border:1px solid rgba(143,211,244,.28);border-radius:20px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.55)}
+.agent-topbar{background:rgba(143,211,244,.06);border-bottom:1px solid rgba(143,211,244,.15);padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.agent-topbar-left{display:flex;align-items:center;gap:10px}
+.agent-icon{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--sky));display:grid;place-items:center;font-size:.95rem}
+.agent-name{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--sky);font-weight:600}
+.agent-status{font-size:.68rem;color:var(--emerald);display:flex;align-items:center;gap:5px}
+.agent-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite;display:inline-block}
+.agent-freq{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:3px 10px;border-radius:6px}
+/* Log del agente */
+.agent-log{padding:18px 20px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;min-height:200px;display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--line)}
+.log-line{display:flex;gap:10px;align-items:flex-start;opacity:0;animation:logfade .4s ease forwards}
+@keyframes logfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.log-ts{color:var(--muted);white-space:nowrap;flex-shrink:0}
+.log-msg{color:var(--text);line-height:1.4}
+.log-msg .up{color:var(--emerald);font-weight:600}
+.log-msg .down{color:var(--red);font-weight:600}
+.log-msg .info{color:var(--sky)}
+.log-msg .warn{color:var(--amber)}
+/* Tabla de precios actualizados */
+.price-table{padding:16px 20px}
+.pt-head{display:grid;grid-template-columns:1fr repeat(3,80px);gap:8px;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.pt-row{display:grid;grid-template-columns:1fr repeat(3,80px);gap:8px;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(127,232,195,.06);font-size:.78rem}
+.pt-name{color:var(--text);font-weight:500}
+.pt-price{font-family:'IBM Plex Mono',monospace;text-align:right;font-size:.8rem}
+.pt-price.flash-up{animation:priceup .6s ease}
+.pt-price.flash-down{animation:pricedown .6s ease}
+@keyframes priceup{0%,100%{color:inherit}40%{color:var(--emerald);background:rgba(23,178,124,.15);border-radius:4px}}
+@keyframes pricedown{0%,100%{color:inherit}40%{color:var(--red);background:rgba(255,122,107,.12);border-radius:4px}}
+.pt-delta{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-align:right}
+.delta-up{color:var(--emerald)}
+.delta-down{color:var(--red)}
+
 /* Calculadora interactiva */
 .calc{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
 .checklist{list-style:none;margin-top:26px}
@@ -207,6 +253,12 @@ section{padding:88px 0;position:relative}
 .calc-total .big{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--mint);font-size:1.7rem;line-height:1.1;text-align:right}
 .calc-total .big small{display:block;font-size:.72rem;color:var(--emerald);font-family:'Inter',sans-serif;font-weight:600}
 .calc-note{font-size:.72rem;color:var(--muted);margin-top:16px}
+/* PVP badge IA */
+.pvp-row{position:relative}
+.pvp-ai-badge{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--sky);background:rgba(143,211,244,.08);border:1px solid rgba(143,211,244,.25);padding:2px 8px;border-radius:100px;margin-left:8px;vertical-align:middle}
+.pvp-ai-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sky);animation:pulse 2s infinite;display:inline-block}
+.pvp-update{animation:pvpflash .7s ease}
+@keyframes pvpflash{0%,100%{opacity:1}40%{opacity:.4;letter-spacing:.04em}}
 
 /* Tiers */
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
@@ -458,47 +510,118 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
   </div>
 </section>
 
-<section id="margen">
-  <div class="wrap calc">
-    <div class="reveal">
-      <span class="eyebrow">Compra con números, no con intuición</span>
-      <h2 class="display" style="font-size:clamp(1.7rem,3.4vw,2.5rem);margin:16px 0 14px">Calcula tu margen ahora, sin registrarte</h2>
-      <p style="color:var(--muted)">Esta es la misma calculadora que vive dentro del portal. Elige un volumen y un nivel de precio: el margen se actualiza al instante.</p>
-      <ul class="checklist">
-        <li>Presets de volumen: 50, 100, 250 y 500 cajas</li>
-        <li>Margen en pesos chilenos y en porcentaje</li>
-        <li>Comparación contra precio de venta al público referencial</li>
-        <li>Dentro del portal, con tus precios reales por SKU</li>
-      </ul>
-    </div>
-    <div class="calc-box reveal d1">
-      <h4>Simulador · Ibuprofeno 400mg · 20 comp.</h4>
-      <div class="calc-group">
-        <label>Volumen de compra (cajas)</label>
-        <div class="pillrow" id="vol-pills">
-          <button class="pill" data-vol="50">50</button>
-          <button class="pill" data-vol="100">100</button>
-          <button class="pill active" data-vol="250">250</button>
-          <button class="pill" data-vol="500">500</button>
+<section id="margen" class="ai-section">
+  <div class="wrap">
+
+    <!-- Bloque IA -->
+    <div class="ai-hero">
+      <div class="reveal">
+        <div class="ai-badge"><span class="pulse-ring"></span> Agente IA activo · Actualizando ahora</div>
+        <h2 class="display ai-title">Tu calculadora conoce el precio real<span class="hl-sky"> del mercado de hoy.</span></h2>
+        <p class="ai-desc">La mayoría de los portales de liquidación te muestran un precio de compra y te dejan solo para saber si te conviene. PLO hace algo diferente: <b>un Agente IA monitorea continuamente los precios de venta al público</b> en farmacias de todo Chile — Ahumada, Cruz Verde, Salcobrand y farmacias independientes — y actualiza el PVP de referencia de cada SKU en el portal.</p>
+        <p class="ai-desc">¿El resultado? Tu calculadora de margen no trabaja con datos de hace seis meses. <b>Trabaja con el precio que está pagando hoy el consumidor final en la farmacia de la esquina.</b> Sabes exactamente cuánto ganas antes de poner una caja en el carrito.</p>
+        <ul class="checklist">
+          <li>PVP actualizado por el Agente: cada SKU tiene el precio de mercado del día</li>
+          <li>Margen real, no estimado: costo PLO vs precio consumidor actual</li>
+          <li>Sin sorpresas al revender: compras sabiendo el piso y el techo del precio</li>
+          <li>El agente detecta tendencias: SKUs cuyo PVP está subiendo aparecen destacados</li>
+        </ul>
+      </div>
+
+      <!-- Panel animado del agente -->
+      <div class="agent-panel reveal d1">
+        <div class="agent-topbar">
+          <div class="agent-topbar-left">
+            <div class="agent-icon">🤖</div>
+            <div>
+              <div class="agent-name">PLO Price Agent v2</div>
+              <div class="agent-status">Monitoreando farmacias Chile</div>
+            </div>
+          </div>
+          <div class="agent-freq">Ciclo: 4 hrs</div>
+        </div>
+        <div class="agent-log" id="agent-log">
+          <!-- Se llena con JS -->
+        </div>
+        <div class="price-table">
+          <div class="pt-head">
+            <span>SKU</span><span style="text-align:right">PLO</span><span style="text-align:right">PVP</span><span style="text-align:right">Δ</span>
+          </div>
+          <div class="pt-row">
+            <span class="pt-name">Ibuprofeno 400mg</span>
+            <span class="pt-price" style="color:var(--mint)">$1.290</span>
+            <span class="pt-price" id="pvp-ibu">$2.890</span>
+            <span class="pt-delta delta-up" id="d-ibu">▲ +3%</span>
+          </div>
+          <div class="pt-row">
+            <span class="pt-name">Amoxicilina 500mg</span>
+            <span class="pt-price" style="color:var(--mint)">$2.350</span>
+            <span class="pt-price" id="pvp-amx">$4.990</span>
+            <span class="pt-delta delta-up" id="d-amx">▲ +1%</span>
+          </div>
+          <div class="pt-row">
+            <span class="pt-name">Omeprazol 20mg</span>
+            <span class="pt-price" style="color:var(--mint)">$890</span>
+            <span class="pt-price" id="pvp-ome">$2.150</span>
+            <span class="pt-delta delta-down" id="d-ome">▼ −2%</span>
+          </div>
+          <div class="pt-row">
+            <span class="pt-name">Losartán 50mg</span>
+            <span class="pt-price" style="color:var(--mint)">$1.150</span>
+            <span class="pt-price" id="pvp-los">$3.290</span>
+            <span class="pt-delta delta-up" id="d-los">▲ +5%</span>
+          </div>
         </div>
       </div>
-      <div class="calc-group">
-        <label>Tu nivel de precio</label>
-        <div class="pillrow" id="tier-pills">
-          <button class="pill" data-cost="1420">Estándar</button>
-          <button class="pill active" data-cost="1290">Oro</button>
-          <button class="pill" data-cost="1190">Platino</button>
-        </div>
-      </div>
-      <div class="calc-row"><span>Costo unitario PLO</span><b id="c-unit">$1.290</b></div>
-      <div class="calc-row"><span>Precio venta público ref.</span><b>$2.890</b></div>
-      <div class="calc-row"><span>Inversión total</span><b id="c-inv">$322.500</b></div>
-      <div class="calc-total">
-        <span>Margen total del lote</span>
-        <div class="big" id="c-margin">$400.000<small id="c-pct">+124% sobre inversión</small></div>
-      </div>
-      <p class="calc-note">Valores referenciales con fines ilustrativos. Dentro del portal verás tus precios reales según tu nivel vigente.</p>
     </div>
+
+    <!-- Calculadora -->
+    <div class="calc">
+      <div class="reveal">
+        <span class="eyebrow">Calculadora con precios de hoy</span>
+        <h2 class="display" style="font-size:clamp(1.7rem,3.4vw,2.5rem);margin:16px 0 14px">Pruébala ahora, antes de registrarte</h2>
+        <p style="color:var(--muted)">El PVP que ves abajo es el que el Agente IA actualizó esta mañana para Ibuprofeno 400mg. Elige tu volumen y nivel: el margen se calcula en tiempo real.</p>
+        <ul class="checklist">
+          <li>PVP referencial actualizado automáticamente cada 4 horas</li>
+          <li>Margen en pesos y porcentaje sobre inversión</li>
+          <li>Dentro del portal, por cada SKU del catálogo completo</li>
+          <li>Compara lotes antes de decidir cuál meter al carrito</li>
+        </ul>
+      </div>
+      <div class="calc-box reveal d1">
+        <h4>Simulador · Ibuprofeno 400mg · 20 comp.</h4>
+        <div class="calc-group">
+          <label>Volumen de compra (cajas)</label>
+          <div class="pillrow" id="vol-pills">
+            <button class="pill" data-vol="50">50</button>
+            <button class="pill" data-vol="100">100</button>
+            <button class="pill active" data-vol="250">250</button>
+            <button class="pill" data-vol="500">500</button>
+          </div>
+        </div>
+        <div class="calc-group">
+          <label>Tu nivel de precio</label>
+          <div class="pillrow" id="tier-pills">
+            <button class="pill" data-cost="1420">Estándar</button>
+            <button class="pill active" data-cost="1290">Oro</button>
+            <button class="pill" data-cost="1190">Platino</button>
+          </div>
+        </div>
+        <div class="calc-row"><span>Costo unitario PLO</span><b id="c-unit">$1.290</b></div>
+        <div class="calc-row pvp-row">
+          <span>PVP mercado <span class="pvp-ai-badge"><span></span>IA · hoy</span></span>
+          <b id="c-pvp" class="pvp-update">$2.890</b>
+        </div>
+        <div class="calc-row"><span>Margen por caja</span><b id="c-mcaja">$1.600</b></div>
+        <div class="calc-row"><span>Inversión total</span><b id="c-inv">$322.500</b></div>
+        <div class="calc-total">
+          <span>Margen total del lote</span>
+          <div class="big" id="c-margin">$400.000<small id="c-pct">+124% sobre inversión</small></div>
+        </div>
+        <p class="calc-note">PVP referencial obtenido por el Agente IA esta mañana (farmacias Ahumada, Cruz Verde, Salcobrand). Dentro del portal tendrás tus precios reales según tu nivel vigente.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -676,12 +799,47 @@ function tickCountdown(){
 }
 tickCountdown(); setInterval(tickCountdown,1000);
 
+/* ---------- Agente IA: log animado ---------- */
+const LOG_MSGS=[
+  {ts:'08:02',msg:'<span class="info">Iniciando ciclo de monitoreo · 847 SKUs en cola</span>'},
+  {ts:'08:04',msg:'Escaneando Ahumada.cl · <span class="up">312 precios obtenidos</span>'},
+  {ts:'08:06',msg:'Escaneando CruzVerde.cl · <span class="up">298 precios obtenidos</span>'},
+  {ts:'08:09',msg:'Escaneando Salcobrand.cl · <span class="up">271 precios obtenidos</span>'},
+  {ts:'08:12',msg:'Ibuprofeno 400mg PVP: <span class="up">$2.890 ▲ +3% vs ayer</span>'},
+  {ts:'08:13',msg:'Losartán 50mg PVP: <span class="up">$3.290 ▲ +5% vs ayer</span>'},
+  {ts:'08:14',msg:'Omeprazol 20mg PVP: <span class="down">$2.150 ▼ −2% vs ayer</span>'},
+  {ts:'08:16',msg:'<span class="warn">⚡ Alerta: Ketoprofeno gel subió +12% — revisar stock</span>'},
+  {ts:'08:18',msg:'<span class="info">Portal actualizado · Calculadoras sincronizadas</span>'},
+];
+function renderLog(){
+  const log=document.getElementById('agent-log');
+  if(!log) return;
+  log.innerHTML='';
+  LOG_MSGS.forEach((m,i)=>{
+    setTimeout(()=>{
+      const div=document.createElement('div');
+      div.className='log-line';
+      div.style.animationDelay='0s';
+      div.innerHTML=`<span class="log-ts">${m.ts}</span><span class="log-msg">${m.msg}</span>`;
+      log.appendChild(div);
+      log.scrollTop=log.scrollHeight;
+    }, reduced ? 0 : i*520);
+  });
+}
+const logIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ renderLog(); logIO.unobserve(e.target); }});
+},{threshold:.3});
+const agentLog=document.getElementById('agent-log');
+if(agentLog) logIO.observe(agentLog);
+
 /* ---------- Calculadora funcional ---------- */
 const PUB=2890;
 let vol=250, cost=1290;
 function calc(){
-  const inv=vol*cost, margin=vol*(PUB-cost), pct=Math.round(margin/inv*100);
+  const inv=vol*cost, mcaja=PUB-cost, margin=vol*mcaja, pct=Math.round(margin/inv*100);
   document.getElementById('c-unit').textContent=fmt(cost);
+  document.getElementById('c-pvp').textContent=fmt(PUB);
+  document.getElementById('c-mcaja').textContent=fmt(mcaja);
   document.getElementById('c-inv').textContent=fmt(inv);
   const mEl=document.getElementById('c-margin');
   mEl.childNodes[0].nodeValue=fmt(margin);
