@@ -109,9 +109,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,21,18,.82);backdrop-f
 .tier-switch button{flex:1;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:.85rem;padding:10px 6px;border-radius:9px;transition:all .25s ease}
 .tier-switch button:hover{color:var(--text)}
 .tier-switch button.active{color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.35)}
-.tier-switch button.active[data-tier="estandar"]{background:linear-gradient(135deg,#B8CFC6,#8FA89E)}
-.tier-switch button.active[data-tier="oro"]{background:linear-gradient(135deg,var(--amber),#E09B2D)}
-.tier-switch button.active[data-tier="platino"]{background:linear-gradient(135deg,var(--sky),#5FB8E8)}
+.tier-switch button.active[data-tier="acceso"]{background:linear-gradient(135deg,var(--emerald),var(--teal))}
+.tier-switch button.active[data-tier="socio"]{background:linear-gradient(135deg,var(--sky),#5FB8E8)}
 /* Producto en demo */
 .demo-product{background:rgba(11,21,18,.55);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;transition:border-color .3s}
 .demo-product:hover{border-color:rgba(127,232,195,.35)}
@@ -377,10 +376,9 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
         <div class="demo-body">
           <div class="demo-label">Vista previa real del portal</div>
 
-          <div class="tier-switch" role="tablist" aria-label="Selecciona un nivel de precio">
-            <button data-tier="estandar" role="tab" aria-selected="false">Estándar</button>
-            <button data-tier="oro" class="active" role="tab" aria-selected="true">Oro</button>
-            <button data-tier="platino" role="tab" aria-selected="false">Platino</button>
+          <div class="tier-switch" role="tablist" aria-label="Selecciona tu nivel de membresía">
+            <button data-tier="acceso" class="active" role="tab" aria-selected="true">PLO Acceso</button>
+            <button data-tier="socio" role="tab" aria-selected="false">PLO Socio ⭐</button>
           </div>
 
           <div class="demo-product">
@@ -719,12 +717,12 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
       <div class="reveal">
         <span class="eyebrow">Calculadora con precios de hoy</span>
         <h2 class="display" style="font-size:clamp(1.7rem,3.4vw,2.5rem);margin:16px 0 14px">Pruébala ahora, antes de registrarte</h2>
-        <p style="color:var(--muted)">El PVP que ves abajo es el que el Agente IA actualizó esta mañana para Ibuprofeno 400mg. Elige tu volumen y nivel: el margen se calcula en tiempo real.</p>
+        <p style="color:var(--muted)">El Radar de Precios IA consulta Dr. Simi y Eco Farmacias por cada SKU y te dice a cuánto vender para quedar bajo el competidor más barato sin sacrificar el margen. Si igualarlo sería ruinoso, te lo dice también.</p>
         <ul class="checklist">
-          <li>PVP referencial actualizado automáticamente cada 4 horas</li>
-          <li>Margen en pesos y porcentaje sobre inversión</li>
-          <li>Dentro del portal, por cada SKU del catálogo completo</li>
-          <li>Compara lotes antes de decidir cuál meter al carrito</li>
+          <li>Precios de Dr. Simi y Eco Farmacias actualizados en cada ciclo</li>
+          <li>PVP recomendado: bajo el más barato, sobre el 30% de margen</li>
+          <li>Alerta si igualar al competidor destruiría el margen</li>
+          <li>Disponible para Socios con Radar semanal — el precio PLO es igual para todos</li>
         </ul>
       </div>
       <div class="calc-box reveal d1">
@@ -738,26 +736,26 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
             <button class="pill" data-vol="500">500</button>
           </div>
         </div>
-        <div class="calc-group">
-          <label>Tu nivel de precio</label>
-          <div class="pillrow" id="tier-pills">
-            <button class="pill" data-cost="1420">Estándar</button>
-            <button class="pill active" data-cost="1290">Oro</button>
-            <button class="pill" data-cost="1190">Platino</button>
-          </div>
-        </div>
         <div class="calc-row"><span>Costo unitario PLO</span><b id="c-unit">$1.290</b></div>
         <div class="calc-row pvp-row">
-          <span>PVP mercado <span class="pvp-ai-badge"><span></span>IA · hoy</span></span>
-          <b id="c-pvp" class="pvp-update">$2.890</b>
+          <span>PVP Dr. Simi <span class="pvp-ai-badge"><span></span>Radar IA</span></span>
+          <b id="c-pvp" class="pvp-update">$2.490</b>
         </div>
-        <div class="calc-row"><span>Margen por caja</span><b id="c-mcaja">$1.600</b></div>
+        <div class="calc-row">
+          <span>PVP Eco Farmacias <span class="pvp-ai-badge"><span></span>Radar IA</span></span>
+          <b id="c-pvp2">$2.690</b>
+        </div>
+        <div class="calc-row"><span>PVP recomendado por IA</span><b id="c-pvprec" style="color:var(--amber)">$2.450</b></div>
+        <div class="calc-row"><span>Margen por caja</span><b id="c-mcaja">$1.160</b></div>
         <div class="calc-row"><span>Inversión total</span><b id="c-inv">$322.500</b></div>
         <div class="calc-total">
           <span>Margen total del lote</span>
-          <div class="big" id="c-margin">$400.000<small id="c-pct">+124% sobre inversión</small></div>
+          <div class="big" id="c-margin">$290.000<small id="c-pct">+90% sobre inversión</small></div>
         </div>
-        <p class="calc-note">PVP referencial obtenido por el Agente IA esta mañana (farmacias Ahumada, Cruz Verde, Salcobrand). Dentro del portal tendrás tus precios reales según tu nivel vigente.</p>
+        <div style="background:rgba(245,184,65,.08);border:1px solid rgba(245,184,65,.25);border-radius:10px;padding:12px 14px;margin-top:14px;font-size:.8rem;color:var(--muted)">
+          <span style="color:var(--amber);font-weight:600">🤖 Recomendación del Agente:</span> Vender a <b style="color:var(--amber)">$2.450</b> queda $40 bajo Dr. Simi (el más barato) manteniendo un margen del 90%. Competir por precio y servicio simultáneamente.
+        </div>
+        <p class="calc-note" style="margin-top:12px">Precios obtenidos por el Radar de Precios IA (Dr. Simi · Eco Farmacias). El precio PLO es el mismo para PLO Acceso y PLO Socio — solo la ventana anticipada y el servicio cambian.</p>
       </div>
     </div>
 
@@ -767,46 +765,85 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
 <section id="tiers">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Niveles de precio</span>
-      <h2 class="display">Mientras más compras, mejor tu precio</h2>
-      <p>Todos los clientes parten en Estándar. Tu volumen y frecuencia te suben de nivel — y cada nivel desbloquea descuentos mayores en todo el catálogo.</p>
+      <span class="eyebrow">Niveles de membresía</span>
+      <h2 class="display">El precio es el mismo para todos.<span style="display:block;background:linear-gradient(92deg,var(--mint),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent">Lo que cambia es el acompañamiento.</span></h2>
+      <p>En un outlet, el descuento ya está en el precio. Lo que escasea es el stock — y lo que no se copia es el servicio. Por eso los dos niveles de PLO se diferencian por herramientas, prioridad y soporte, no por puntos porcentuales.</p>
     </div>
-    <div class="tiers">
-      <div class="tier reveal">
-        <div class="tname">Estándar</div>
-        <div class="disc">NIVEL DE ENTRADA</div>
-        <p class="tdesc">Para farmacias que recién comienzan a comprar liquidaciones con PLO.</p>
-        <ul>
-          <li>Acceso completo al catálogo de 200+ SKUs</li>
-          <li>Ofertas Relámpago y alta rotación</li>
-          <li>Calculadora de rentabilidad</li>
-          <li>Seguimiento de pedidos en línea</li>
-        </ul>
-        <a class="btn btn-ghost" href="#cuenta">Comenzar aquí</a>
+
+    <!-- Tabla comparativa -->
+    <div class="reveal" style="background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:28px;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+
+      <!-- Header tabla -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)">
+        <div style="padding:22px 28px;border-right:1px solid var(--line)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Característica</div>
+        </div>
+        <div style="padding:22px 28px;text-align:center;border-right:1px solid var(--line)">
+          <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1.25rem;margin-bottom:4px">PLO Acceso</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.06em">ENTRADA AL OUTLET</div>
+        </div>
+        <div style="padding:22px 28px;text-align:center;background:rgba(143,211,244,.06);position:relative">
+          <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--sky),#5FB8E8);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:700;padding:4px 14px;border-radius:0 0 10px 10px;letter-spacing:.08em">RECOMENDADO</div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:1.25rem;color:var(--sky);margin-bottom:4px;margin-top:8px">PLO Socio</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--sky);letter-spacing:.06em;opacity:.7">SERVICIO COMPLETO</div>
+        </div>
       </div>
-      <div class="tier reveal d1">
-        <div class="tname" style="color:var(--amber)">Oro</div>
-        <div class="disc">DESCUENTOS PREFERENTES</div>
-        <p class="tdesc">Para compradores recurrentes con volumen mensual sostenido.</p>
-        <ul>
-          <li>Todo lo del nivel Estándar</li>
-          <li>Precio preferente en todo el catálogo</li>
-          <li>Acceso anticipado a lotes nuevos</li>
-          <li>Ejecutivo comercial asignado</li>
-        </ul>
-        <a class="btn btn-ghost" href="#cuenta">Conocer requisitos</a>
+
+      <!-- Filas de tabla -->
+      <style>
+        .trow{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(127,232,195,.06)}
+        .trow:last-child{border-bottom:none}
+        .trow:hover{background:rgba(127,232,195,.03)}
+        .tcell{padding:14px 28px;font-size:.88rem;border-right:1px solid rgba(127,232,195,.06)}
+        .tcell:last-child{border-right:none;background:rgba(143,211,244,.03)}
+        .tcell.feature{color:var(--muted);font-size:.85rem}
+        .tcell.center{text-align:center}
+        .tick{color:var(--emerald);font-size:1rem}
+        .cross{color:rgba(127,232,195,.2);font-size:1rem}
+        .tcell b{color:var(--text);font-weight:600}
+        .tcell .sky{color:var(--sky);font-weight:600}
+      </style>
+      <div class="trow"><div class="tcell feature">Precio outlet</div><div class="tcell center"><b>Idéntico</b></div><div class="tcell center"><b>Idéntico</b></div></div>
+      <div class="trow"><div class="tcell feature">Protocolo de Venta</div><div class="tcell center">Guion básico</div><div class="tcell center"><span class="sky">Kit completo</span></div></div>
+      <div class="trow"><div class="tcell feature">Radar de Precios IA</div><div class="tcell center"><span class="cross">—</span></div><div class="tcell center"><span class="sky">Semanal</span></div></div>
+      <div class="trow"><div class="tcell feature">Recomendación de compra</div><div class="tcell center"><span class="cross">—</span></div><div class="tcell center"><span class="sky">Mensual</span></div></div>
+      <div class="trow"><div class="tcell feature">Kit de vitrina / redes</div><div class="tcell center"><span class="cross">—</span></div><div class="tcell center"><span class="tick">✓</span></div></div>
+      <div class="trow"><div class="tcell feature">Capacitación</div><div class="tcell center">Grabaciones</div><div class="tcell center"><span class="sky">En vivo + Q&A</span></div></div>
+      <div class="trow"><div class="tcell feature">Soporte</div><div class="tcell center">Canal general</div><div class="tcell center"><span class="sky">Ejecutivo directo · 2h</span></div></div>
+      <div class="trow"><div class="tcell feature">Ventana anticipada de lotes</div><div class="tcell center"><span class="cross">—</span></div><div class="tcell center"><span class="sky">24 horas antes</span></div></div>
+      <div class="trow"><div class="tcell feature">Envío gratis desde</div><div class="tcell center">$100.000 neto</div><div class="tcell center"><span class="sky">$50.000 neto</span></div></div>
+      <div class="trow"><div class="tcell feature">Sección "Mis servicios"</div><div class="tcell center">Acceso básico</div><div class="tcell center"><span class="sky">10 servicios desbloqueados</span></div></div>
+      <div class="trow"><div class="tcell feature">Upgrade por referidos</div><div class="tcell center">3 referidos → Socio</div><div class="tcell center"><span class="tick">✓ Automático en vivo</span></div></div>
+      <div class="trow"><div class="tcell feature">Acceso al catálogo de 200+ SKUs</div><div class="tcell center"><span class="tick">✓</span></div><div class="tcell center"><span class="tick">✓</span></div></div>
+
+      <!-- Footer tabla con CTAs -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)">
+        <div style="padding:22px 28px;border-right:1px solid var(--line)"></div>
+        <div style="padding:22px 28px;text-align:center;border-right:1px solid var(--line)">
+          <a class="btn btn-ghost" href="#cuenta" style="width:100%">Comenzar con Acceso</a>
+        </div>
+        <div style="padding:22px 28px;text-align:center;background:rgba(143,211,244,.04)">
+          <a class="btn btn-primary" href="#cuenta" style="width:100%">Quiero ser Socio</a>
+        </div>
       </div>
-      <div class="tier featured reveal d2">
-        <div class="tname">Platino</div>
-        <div class="disc">EL MEJOR PRECIO DEL PORTAL</div>
-        <p class="tdesc">Para droguerías y cadenas con alto volumen de compra.</p>
-        <ul>
-          <li>Todo lo del nivel Oro</li>
-          <li>El mejor precio disponible por SKU</li>
-          <li>Prioridad en lotes de alta demanda</li>
-          <li>Condiciones de despacho preferentes</li>
-        </ul>
-        <a class="btn btn-primary" href="#cuenta">Hablar con PLO</a>
+    </div>
+
+    <!-- Insight de la lógica -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div style="background:rgba(23,178,124,.08);border:1px solid rgba(127,232,195,.2);border-radius:14px;padding:22px">
+        <div style="font-size:1.6rem;margin-bottom:10px">⚖️</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;margin-bottom:6px">Precio justo para todos</div>
+        <div style="font-size:.85rem;color:var(--muted)">El outlet ya tiene el descuento incorporado. Nadie paga más por ser "nuevo". El precio del lote es el precio, sin jerarquías de compra.</div>
+      </div>
+      <div style="background:rgba(143,211,244,.06);border:1px solid rgba(143,211,244,.2);border-radius:14px;padding:22px">
+        <div style="font-size:1.6rem;margin-bottom:10px">🔒</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;margin-bottom:6px">Stock como ventaja real</div>
+        <div style="font-size:.85rem;color:var(--muted)">Los Socios ven los lotes nuevos 24h antes. Cuando el stock es limitado, esa ventana vale más que cualquier descuento adicional.</div>
+      </div>
+      <div style="background:rgba(245,184,65,.06);border:1px solid rgba(245,184,65,.2);border-radius:14px;padding:22px">
+        <div style="font-size:1.6rem;margin-bottom:10px">📈</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;margin-bottom:6px">Servicio que no se copia</div>
+        <div style="font-size:.85rem;color:var(--muted)">El Radar de Precios, el kit de vitrina y el ejecutivo directo son lo que convierte un precio bajo en un margen real sostenible.</div>
       </div>
     </div>
   </div>
@@ -849,9 +886,12 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:.8rem;color:var
     <div class="cta-final reveal">
       <span class="eyebrow" style="margin-bottom:20px"><span class="dot"></span> Cupos de registro abiertos</span>
       <h2 class="display">Tu farmacia ya debería estar comprando aquí</h2>
-      <p>Solicita tu cuenta B2B con el RUT de tu farmacia o droguería. Validamos tu giro, te asignamos un nivel de precio y quedas comprando el mismo día.</p>
-      <a class="btn btn-primary" href="mailto:contacto@plodrogueria.cl?subject=Solicitud%20de%20cuenta%20B2B">Solicitar cuenta con mi RUT</a>
-      <div class="mono-note">Acceso exclusivo para farmacias, droguerías y distribuidores con giro vigente.</div>
+      <p>Solicita tu cuenta con el RUT de tu farmacia. Entra como PLO Acceso desde el día uno — y si refieres 3 farmacias, subes a PLO Socio automáticamente en cuanto completen su primera compra.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="mailto:contacto@plodrogueria.cl?subject=Solicitud%20PLO%20Acceso">Empezar con PLO Acceso</a>
+        <a class="btn btn-primary" href="mailto:contacto@plodrogueria.cl?subject=Solicitud%20PLO%20Socio">Quiero ser PLO Socio</a>
+      </div>
+      <div class="mono-note">Acceso exclusivo para farmacias, droguerías y distribuidores con giro vigente · RUT requerido</div>
     </div>
   </div>
 </section>
@@ -904,10 +944,10 @@ const cio = new IntersectionObserver(es=>{
 document.querySelectorAll('.count').forEach(el=>cio.observe(el));
 
 /* ---------- Demo hero: selector de tier ---------- */
+// Demo hero: precio PLO idéntico en ambos niveles — lo que cambia son los servicios
 const demoPrices = {
-  estandar:{p1:1420,p2:2790},
-  oro:{p1:1290,p2:2540},
-  platino:{p1:1190,p2:2350}
+  acceso:{p1:1290,p2:2540, badge:'Precio outlet'},
+  socio: {p1:1290,p2:2540, badge:'+ Radar IA · 24h anticipado'}
 };
 const pub = {p1:2890,p2:4990};
 document.querySelectorAll('.tier-switch button').forEach(btn=>{
@@ -919,7 +959,7 @@ document.querySelectorAll('.tier-switch button').forEach(btn=>{
     const t=demoPrices[btn.dataset.tier];
     ['p1','p2'].forEach(id=>{
       const el=document.getElementById(id);
-      el.innerHTML='<small>Tu precio por caja</small>'+fmt(t[id]);
+      el.innerHTML='<small>'+t.badge+'</small>'+fmt(t[id]);
       el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
       const save=Math.round((1-t[id]/pub[id])*100);
       document.getElementById('s'+id.slice(1)).innerHTML='<s>Público: '+fmt(pub[id])+'</s>Ahorras '+save+'%';
@@ -971,26 +1011,32 @@ const logIO=new IntersectionObserver(es=>{
 const agentLog=document.getElementById('agent-log');
 if(agentLog) logIO.observe(agentLog);
 
-/* ---------- Calculadora funcional ---------- */
-const PUB=2890;
-let vol=250, cost=1290;
+/* ---------- Calculadora funcional (precio único PLO) ---------- */
+const COST=1290, PVP_SIMI=2490, PVP_ECO=2690, MARGEN_MIN=0.30;
+let vol=250;
 function calc(){
-  const inv=vol*cost, mcaja=PUB-cost, margin=vol*mcaja, pct=Math.round(margin/inv*100);
-  document.getElementById('c-unit').textContent=fmt(cost);
-  document.getElementById('c-pvp').textContent=fmt(PUB);
-  document.getElementById('c-mcaja').textContent=fmt(mcaja);
+  // PVP recomendado: $40 bajo el más barato, pero con mínimo 30% de margen
+  const pvpMinComp=Math.min(PVP_SIMI,PVP_ECO);
+  const pvpRec=pvpMinComp-40;
+  const margenRec=(pvpRec-COST)/pvpRec;
+  const pvpFinal=margenRec>=MARGEN_MIN ? pvpRec : null;
+  const inv=vol*COST;
+  const mcaja=pvpFinal ? pvpFinal-COST : 0;
+  const margin=vol*mcaja;
+  const pct=inv>0?Math.round(margin/inv*100):0;
+  document.getElementById('c-unit').textContent=fmt(COST);
+  document.getElementById('c-pvp').textContent=fmt(PVP_SIMI);
+  document.getElementById('c-pvp2').textContent=fmt(PVP_ECO);
+  document.getElementById('c-pvprec').textContent=pvpFinal?fmt(pvpFinal):'⚠ No recomendado';
+  document.getElementById('c-mcaja').textContent=pvpFinal?fmt(mcaja):'—';
   document.getElementById('c-inv').textContent=fmt(inv);
   const mEl=document.getElementById('c-margin');
-  mEl.childNodes[0].nodeValue=fmt(margin);
-  document.getElementById('c-pct').textContent='+'+pct+'% sobre inversión';
+  mEl.childNodes[0].nodeValue=pvpFinal?fmt(margin):'$0';
+  document.getElementById('c-pct').textContent=pvpFinal?'+'+pct+'% sobre inversión':'Margen insuficiente';
 }
 document.querySelectorAll('#vol-pills .pill').forEach(p=>p.addEventListener('click',()=>{
   document.querySelectorAll('#vol-pills .pill').forEach(x=>x.classList.toggle('active',x===p));
   vol=+p.dataset.vol; calc();
-}));
-document.querySelectorAll('#tier-pills .pill').forEach(p=>p.addEventListener('click',()=>{
-  document.querySelectorAll('#tier-pills .pill').forEach(x=>x.classList.toggle('active',x===p));
-  cost=+p.dataset.cost; calc();
 }));
 calc();
 </script>
